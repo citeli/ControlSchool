@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Dominio.Entidades.Turma>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            Início
+        </th>
+        <th>
+            Fim
+        </th>
+        <th>
+            Horário
+        </th>
+        <th>
+            Curso
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var turma in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => turma.DataInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => turma.DataFim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => turma.Horario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => turma.Curso.NomeCurso)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = turma.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = turma.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = turma.Id })
+        </td>
+    </tr>
+}
+
+</table>

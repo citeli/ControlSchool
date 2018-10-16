@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Dominio.Entidades.Professor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Professores</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar", "Create")
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+            E-mail
+        </th>
+        <th>
+            Cadastro
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var professor in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => professor.Nome)
+            @Html.DisplayFor(modelItem => professor.SobreNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => professor.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => professor.DataCadastro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=professor.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=professor.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=professor.Id })
+        </td>
+    </tr>
+}
+
+</table>
